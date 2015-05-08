@@ -23,7 +23,7 @@ $(document).ready(function () {
 function getdate(){
       var today = new Date();
       var dd = today.getDate();
-      var mm = today.getMonth();
+      var mm = today.getMonth()+1;
       var yyyy = today.getFullYear();
       if(mm < 10) {
         mm = "0" + mm;
@@ -34,12 +34,12 @@ function getdate(){
 }
 
 function post(){
-  $("#json").append('{"posts":['  + '<br />');
-  $.getJSON('posts.json', function(data) {
-    $.each(data.posts, function(key, val) {
-      var single = '{"t":"' + val.t + '", "h":"' + val.h + '", "c":"' + val.c + '"}';
+  $("#json").append('{"entries":['  + '<br />');
+  $.getJSON('entries.json', function(data) {
+    $.each(data.entries, function(key, val) {
+      var single = '{"date":"' + val.date + '", "title":"' + val.title + '", "text":"' + val.text + '"}';
       $("#json").append(single);
-      if((data.posts.length - 1) != key){
+      if((data.entries.length - 1) != key){
         $("#json").append(',<br />');
       } else {
         $("#json").append(',<br />');
@@ -48,7 +48,7 @@ function post(){
         var h = $("input#h").val();
         var c = $("textarea#c").val();
         c = $("textarea#c").val().replace(/\n/g, "&lt;br&gt;");
-        var added = '{"t":"' + t + '", "h":"' + h + '", "c":"' + c + '"}';
+        var added = '{"date":"' + t + '", "title":"' + h + '", "text":"' + c + '"}';
         $("#json").append(added);
         $("#json").append('<br />]}');
       }

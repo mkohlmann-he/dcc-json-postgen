@@ -1,0 +1,14 @@
+{
+	"entries":[
+		{
+		"date":"03/17/2015",
+		"title":"post one",
+		"text":"this is the content of post one."
+		},
+		{
+		"date":"03/18/2015",
+		"title":"post two",
+		"text":"this is the content of post two."
+		}
+	]
+}
